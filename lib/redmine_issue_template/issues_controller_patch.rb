@@ -18,12 +18,12 @@ module RedmineIssueTemplate
           content = File.read(template_path)
           @issue.description = content
           if template_path == project_template_path
-            Rails.logger.info("RedmineIssueTemplate: Applied project template for project '#{@issue.project.identifier}'.")
+            Rails.logger.debug("RedmineIssueTemplate: Applied project template for project '#{@issue.project.identifier}'.")
           else
-            Rails.logger.info("RedmineIssueTemplate: Applied default template in build_new_issue_from_params.")
+            Rails.logger.debug("RedmineIssueTemplate: Applied default template in build_new_issue_from_params.")
           end
         else
-          Rails.logger.warn("RedmineIssueTemplate: No template file found at #{project_template_path} or #{default_template_path}")
+          Rails.logger.debug("RedmineIssueTemplate: No template file found at #{project_template_path} or #{default_template_path}")
         end
       end
     rescue => e
